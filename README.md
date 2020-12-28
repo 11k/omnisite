@@ -1,27 +1,33 @@
-# NextJS Typescript Boilerplate
+![Destiny logo](public/img/dgg-logo.svg)
 
-Bootstrap a developer-friendly NextJS app configured with:
+This is a WIP frontend replacement for destiny.gg.
 
-- [Typescript](https://www.typescriptlang.org/)
-- Linting with [ESLint](https://eslint.org/)
-- Formatting with [Prettier](https://prettier.io/)
-- Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
-- Testing with [Jest](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
+## Requirements
 
-## Deploy your own
+- [npm](https://www.npmjs.com/)
+- [mkcert](https://github.com/FiloSottile/mkcert)
 
-Deploy the example using [Vercel](https://vercel.com):
+## Instructions
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest)
+1. Install requirements listed above
+2. Clone this repository
+3. Navigate to the root folder (where this file is located)
+4. Install all project dependencies
 
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
-# or
-yarn create next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
+```
+npm install
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+5. Create and install a locally-trusted certificate
+
+```
+mkcert localhost
+```
+
+6. Run your local development server
+
+```
+npm run dev
+```
+
+7. Access your development server at https://localhost:3000/
