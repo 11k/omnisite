@@ -1,13 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const EmbeddedStream = ({ style }) => {
-   return (
-      <StyledEmbeddedStream
-         style={style}
-         src="https://player.twitch.tv?channel=destiny&parent=localhost"
-      />
-   )
+import { embedUrlForEmbedDetails } from 'lib/embed-details'
+
+const EmbeddedStream = ({ style, embedDetails }) => {
+   const embedUrl = embedUrlForEmbedDetails(embedDetails)
+   return <StyledEmbeddedStream style={style} src={embedUrl} />
 }
 
 const StyledEmbeddedStream = styled.iframe`
