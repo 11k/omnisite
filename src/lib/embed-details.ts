@@ -20,3 +20,24 @@ export const embedUrlForEmbedDetails = (embedDetails) => {
             throw new Error('This platform is unsupported.')
     }
 }
+
+export const embedDetailsFromHash = (hash) => {
+    if (!hash) {
+        return null
+    }
+
+    hash = hash.substr(1)
+    if (!hash) {
+        return null
+    }
+
+    const [platform, channel] = hash.split('/')
+    if (!platform || !channel) {
+        return null
+    }
+
+    return {
+        platform: platform,
+        channel: channel,
+    }
+}
