@@ -14,7 +14,7 @@ const BigScreen = (): JSX.Element => {
 
   useEffect(() => {
     const handleHashChange = () => {
-      const newEmbedDetails = embedDetailsFromHash(location.hash)
+      const newEmbedDetails = embedDetailsFromHash(window.location.hash)
       if (newEmbedDetails) {
         setEmbedDetails(newEmbedDetails)
       } else {
