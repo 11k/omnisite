@@ -5,6 +5,7 @@ export const embedUrlForEmbedDetails = (embedDetails) => {
         case 'twitch':
             params = new URLSearchParams({
                 channel: channel,
+                parent: process.env.NEXT_PUBLIC_TWITCH_EMBED_PARENT,
             })
             return 'https://player.twitch.tv?' + params.toString()
         case 'youtube':
@@ -12,6 +13,7 @@ export const embedUrlForEmbedDetails = (embedDetails) => {
         case 'twitch-vod':
             params = new URLSearchParams({
                 video: channel,
+                parent: process.env.NEXT_PUBLIC_TWITCH_EMBED_PARENT,
             })
             return 'https://player.twitch.tv?' + params.toString()
         default:

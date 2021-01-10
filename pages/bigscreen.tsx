@@ -3,15 +3,12 @@ import styled from 'styled-components'
 
 import { Default } from 'layouts'
 import { EmbeddedStream } from 'layouts/components'
+import { defaultEmbedDetails } from 'lib/constants'
 
 const BigScreen = (): JSX.Element => {
-  const embedDetails = {
-    platform: 'twitch',
-    channel: 'destiny',
-  }
   return (
     <Container>
-      <EmbeddedStream style={{ flex: 1 }} embedDetails={embedDetails} />
+      <EmbeddedStream style={{ flex: 1 }} embedDetails={defaultEmbedDetails} />
     </Container>
   )
 }
