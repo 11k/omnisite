@@ -17,7 +17,7 @@ export const embedUrlForEmbedDetails = (embedDetails) => {
             })
             return 'https://player.twitch.tv?' + params.toString()
         default:
-            throw new Error('This platform is unsupported.')
+            return null
     }
 }
 

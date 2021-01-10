@@ -3,7 +3,10 @@ import styled from 'styled-components'
 
 import { Default } from 'layouts'
 import { EmbeddedStream } from 'layouts/components'
-import { embedDetailsFromHash } from 'lib/embed-details'
+import {
+  embedUrlForEmbedDetails,
+  embedDetailsFromHash,
+} from 'lib/embed-details'
 import { defaultEmbedDetails } from 'lib/constants'
 
 const BigScreen = (): JSX.Element => {
@@ -25,9 +28,12 @@ const BigScreen = (): JSX.Element => {
     }
   }, [])
 
+  const embedUrl =
+    embedUrlForEmbedDetails(embedDetails) ??
+    embedUrlForEmbedDetails(defaultEmbedDetails)
   return (
     <Container>
-      <EmbeddedStream style={{ flex: 1 }} embedDetails={embedDetails} />
+      <EmbeddedStream style={{ flex: 1 }} embedUrl={embedUrl} />
     </Container>
   )
 }
