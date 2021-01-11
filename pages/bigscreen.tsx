@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { Default } from 'layouts'
-import { EmbeddedStream } from 'layouts/components'
+import { EmbeddedStream, Chat } from 'layouts/components'
 import {
   embedUrlForEmbedDetails,
   embedDetailsFromHash,
@@ -34,6 +34,7 @@ const BigScreen = (): JSX.Element => {
   return (
     <Container>
       <EmbeddedStream style={{ flex: 1 }} embedUrl={embedUrl} />
+      <Chat style={{ width: '500px' }} />
     </Container>
   )
 }
