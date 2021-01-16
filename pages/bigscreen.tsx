@@ -37,18 +37,13 @@ const BigScreen = (): JSX.Element => {
     embedUrlForEmbedDetails(embedDetails) ??
     embedUrlForEmbedDetails(defaultEmbedDetails)
 
-  const chat = (
-    <Chat
-      style={{ width: '500px' }}
-      onToggleChatPositionClick={handleToggleChatPositionClick}
-    />
-  )
-
   return (
-    <Container>
-      {chatOnLeft && chat}
+    <Container chatOnLeft={chatOnLeft}>
       <EmbeddedStream style={{ flex: 1 }} embedUrl={embedUrl} />
-      {!chatOnLeft && chat}
+      <Chat
+        style={{ width: '500px' }}
+        onToggleChatPositionClick={handleToggleChatPositionClick}
+      />
     </Container>
   )
 }
@@ -57,6 +52,7 @@ const Container = styled.div`
   display: flex;
   flex: 1;
   justify-content: center;
+  flex-direction: ${({ chatOnLeft }) => (chatOnLeft ? 'row-reverse' : 'row')};
 `
 
 BigScreen.layout = Default
