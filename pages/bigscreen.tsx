@@ -22,7 +22,11 @@ const BigScreen = (): JSX.Element => {
   }
 
   const handleToggleChatPositionClick = () => {
-    setChatOnLeft((previousChatOnLeft) => !previousChatOnLeft)
+    setChatOnLeft((previousChatOnLeft) => {
+      const newChatOnLeft = !previousChatOnLeft
+      window.localStorage.setItem('chatOnLeft', newChatOnLeft ? 'true' : '')
+      return newChatOnLeft
+    })
   }
 
   const handlePopoutChatClick = () => {
@@ -39,6 +43,9 @@ const BigScreen = (): JSX.Element => {
   }
 
   useEffect(() => {
+    const initialChatOnLeft = !!window.localStorage.getItem('chatOnLeft')
+    setChatOnLeft(initialChatOnLeft)
+
     const handleHashChange = () => {
       const newEmbedDetails = embedDetailsFromHash(window.location.hash)
       if (newEmbedDetails) {
