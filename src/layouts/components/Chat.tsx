@@ -8,6 +8,7 @@ type Props = {
 const Chat: React.FunctionComponent<Props> = ({
   style,
   onToggleChatPositionClick,
+  onPopoutChatClick,
   onCloseChatClick,
 }) => {
   // https://reactjs.org/docs/hooks-faq.html#is-there-something-like-forceupdate
@@ -27,7 +28,7 @@ const Chat: React.FunctionComponent<Props> = ({
         <button type="button" onClick={onToggleChatPositionClick}>
           Swap
         </button>
-        <button type="button">Popout</button>
+        <button type="button" onClick={onPopoutChatClick}>Popout</button>
         <button type="button" onClick={onCloseChatClick}>
           Close
         </button>

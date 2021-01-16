@@ -18,6 +18,15 @@ const BigScreen = (): JSX.Element => {
     setChatOnLeft((previousChatOnLeft) => !previousChatOnLeft)
   }
 
+  const handlePopoutChatClick = () => {
+    setShowChat(false)
+    window.open(
+      'https://www.destiny.gg/embed/chat',
+      '_blank',
+      'height=500,width=420'
+    )
+  }
+
   const handleCloseChatClick = () => {
     setShowChat(false)
   }
@@ -49,6 +58,7 @@ const BigScreen = (): JSX.Element => {
         <Chat
           style={{ width: '500px' }}
           onToggleChatPositionClick={handleToggleChatPositionClick}
+          onPopoutChatClick={handlePopoutChatClick}
           onCloseChatClick={handleCloseChatClick}
         />
       )}
