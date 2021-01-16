@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useReducer } from 'react'
 import styled from 'styled-components'
 
 import { Default } from 'layouts'
@@ -11,8 +11,15 @@ import { defaultEmbedDetails } from 'lib/constants'
 
 const BigScreen = (): JSX.Element => {
   const [embedDetails, setEmbedDetails] = useState(defaultEmbedDetails)
+
+  // https://reactjs.org/docs/hooks-faq.html#is-there-something-like-forceupdate
+  const [chatRefreshKey, refreshChat] = useReducer((x) => x + 1, 0)
   const [chatOnLeft, setChatOnLeft] = useState(false)
   const [showChat, setShowChat] = useState(true)
+
+  const handleRefreshChatClick = () => {
+    refreshChat()
+  }
 
   const handleToggleChatPositionClick = () => {
     setChatOnLeft((previousChatOnLeft) => !previousChatOnLeft)
@@ -57,6 +64,8 @@ const BigScreen = (): JSX.Element => {
       {showChat && (
         <Chat
           style={{ width: '500px' }}
+          chatRefreshKey={chatRefreshKey}
+          onRefreshChatClick={handleRefreshChatClick}
           onToggleChatPositionClick={handleToggleChatPositionClick}
           onPopoutChatClick={handlePopoutChatClick}
           onCloseChatClick={handleCloseChatClick}

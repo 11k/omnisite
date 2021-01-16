@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 type Props = {
@@ -7,28 +7,26 @@ type Props = {
 
 const Chat: React.FunctionComponent<Props> = ({
   style,
+  chatRefreshKey,
+  onRefreshChatClick,
   onToggleChatPositionClick,
   onPopoutChatClick,
   onCloseChatClick,
 }) => {
-  // https://reactjs.org/docs/hooks-faq.html#is-there-something-like-forceupdate
-  const [chatRefreshKey, forceUpdate] = useReducer((x) => x + 1, 0)
-  const refreshChat = () => {
-    forceUpdate()
-  }
-
   return (
     <Container style={style}>
       <ChatActionBar>
         <div style={{ flex: 1 }}>
-          <button type="button" onClick={refreshChat}>
+          <button type="button" onClick={onRefreshChatClick}>
             Refresh
           </button>
         </div>
         <button type="button" onClick={onToggleChatPositionClick}>
           Swap
         </button>
-        <button type="button" onClick={onPopoutChatClick}>Popout</button>
+        <button type="button" onClick={onPopoutChatClick}>
+          Popout
+        </button>
         <button type="button" onClick={onCloseChatClick}>
           Close
         </button>
