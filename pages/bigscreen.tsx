@@ -12,9 +12,14 @@ import { defaultEmbedDetails } from 'lib/constants'
 const BigScreen = (): JSX.Element => {
   const [embedDetails, setEmbedDetails] = useState(defaultEmbedDetails)
   const [chatOnLeft, setChatOnLeft] = useState(false)
+  const [showChat, setShowChat] = useState(true)
 
   const handleToggleChatPositionClick = () => {
     setChatOnLeft((previousChatOnLeft) => !previousChatOnLeft)
+  }
+
+  const handleCloseChatClick = () => {
+    setShowChat(false)
   }
 
   useEffect(() => {
@@ -40,10 +45,13 @@ const BigScreen = (): JSX.Element => {
   return (
     <Container chatOnLeft={chatOnLeft}>
       <EmbeddedStream style={{ flex: 1 }} embedUrl={embedUrl} />
-      <Chat
-        style={{ width: '500px' }}
-        onToggleChatPositionClick={handleToggleChatPositionClick}
-      />
+      {showChat && (
+        <Chat
+          style={{ width: '500px' }}
+          onToggleChatPositionClick={handleToggleChatPositionClick}
+          onCloseChatClick={handleCloseChatClick}
+        />
+      )}
     </Container>
   )
 }

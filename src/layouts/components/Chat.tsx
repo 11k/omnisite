@@ -8,6 +8,7 @@ type Props = {
 const Chat: React.FunctionComponent<Props> = ({
   style,
   onToggleChatPositionClick,
+  onCloseChatClick,
 }) => {
   // https://reactjs.org/docs/hooks-faq.html#is-there-something-like-forceupdate
   const [chatRefreshKey, forceUpdate] = useReducer((x) => x + 1, 0)
@@ -27,7 +28,9 @@ const Chat: React.FunctionComponent<Props> = ({
           Swap
         </button>
         <button type="button">Popout</button>
-        <button type="button">Close</button>
+        <button type="button" onClick={onCloseChatClick}>
+          Close
+        </button>
       </ChatActionBar>
       <EmbeddedChat
         key={chatRefreshKey}
