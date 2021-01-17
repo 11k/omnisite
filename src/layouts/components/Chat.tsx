@@ -11,6 +11,11 @@ import { ChatActionBarButton } from 'layouts/components'
 
 type Props = {
   style?: React.CSSProperties
+  chatRefreshKey: number
+  onRefreshChatClick: React.MouseEventHandler<HTMLDivElement>
+  onToggleChatPositionClick: React.MouseEventHandler<HTMLDivElement>
+  onPopoutChatClick: React.MouseEventHandler<HTMLDivElement>
+  onCloseChatClick: React.MouseEventHandler<HTMLDivElement>
 }
 
 const Chat: React.FunctionComponent<Props> = ({
@@ -20,32 +25,30 @@ const Chat: React.FunctionComponent<Props> = ({
   onToggleChatPositionClick,
   onPopoutChatClick,
   onCloseChatClick,
-}) => {
-  return (
-    <Container style={style}>
-      <ChatActionBar>
-        <div style={{ flex: 1 }}>
-          <ChatActionBarButton onClick={onRefreshChatClick}>
-            <SyncAlt />
-          </ChatActionBarButton>
-        </div>
-        <ChatActionBarButton onClick={onToggleChatPositionClick}>
-          <ExchangeAlt />
+}) => (
+  <Container style={style}>
+    <ChatActionBar>
+      <div style={{ flex: 1 }}>
+        <ChatActionBarButton onClick={onRefreshChatClick}>
+          <SyncAlt />
         </ChatActionBarButton>
-        <ChatActionBarButton onClick={onPopoutChatClick}>
-          <ExternalLinkSquareAlt />
-        </ChatActionBarButton>
-        <ChatActionBarButton onClick={onCloseChatClick}>
-          <Times />
-        </ChatActionBarButton>
-      </ChatActionBar>
-      <EmbeddedChat
-        key={chatRefreshKey}
-        src="https://www.destiny.gg/embed/chat"
-      />
-    </Container>
-  )
-}
+      </div>
+      <ChatActionBarButton onClick={onToggleChatPositionClick}>
+        <ExchangeAlt />
+      </ChatActionBarButton>
+      <ChatActionBarButton onClick={onPopoutChatClick}>
+        <ExternalLinkSquareAlt />
+      </ChatActionBarButton>
+      <ChatActionBarButton onClick={onCloseChatClick}>
+        <Times />
+      </ChatActionBarButton>
+    </ChatActionBar>
+    <EmbeddedChat
+      key={chatRefreshKey}
+      src="https://www.destiny.gg/embed/chat"
+    />
+  </Container>
+)
 
 const Container = styled.div`
   display: flex;

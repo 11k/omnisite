@@ -3,13 +3,19 @@ import styled from 'styled-components'
 
 import { colors } from 'design-system'
 
-const ChatActionBarButton = ({ children, onClick }) => {
-  return (
-    <StyledChatActionBarButton onClick={onClick}>
-      {children}
-    </StyledChatActionBarButton>
-  )
+type Props = {
+  children: React.ReactNode
+  onClick: React.MouseEventHandler<HTMLDivElement>
 }
+
+const ChatActionBarButton: React.FunctionComponent<Props> = ({
+  children,
+  onClick,
+}) => (
+  <StyledChatActionBarButton onClick={onClick}>
+    {children}
+  </StyledChatActionBarButton>
+)
 
 const StyledChatActionBarButton = styled.div`
   display: flex;
