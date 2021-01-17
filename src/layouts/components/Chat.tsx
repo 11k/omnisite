@@ -1,5 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import {
+  SyncAlt,
+  ExchangeAlt,
+  ExternalLinkSquareAlt,
+  Times,
+} from '@styled-icons/fa-solid'
+
+import { ChatActionBarButton } from 'layouts/components'
 
 type Props = {
   style?: React.CSSProperties
@@ -17,19 +25,19 @@ const Chat: React.FunctionComponent<Props> = ({
     <Container style={style}>
       <ChatActionBar>
         <div style={{ flex: 1 }}>
-          <button type="button" onClick={onRefreshChatClick}>
-            Refresh
-          </button>
+          <ChatActionBarButton onClick={onRefreshChatClick}>
+            <SyncAlt />
+          </ChatActionBarButton>
         </div>
-        <button type="button" onClick={onToggleChatPositionClick}>
-          Swap
-        </button>
-        <button type="button" onClick={onPopoutChatClick}>
-          Popout
-        </button>
-        <button type="button" onClick={onCloseChatClick}>
-          Close
-        </button>
+        <ChatActionBarButton onClick={onToggleChatPositionClick}>
+          <ExchangeAlt />
+        </ChatActionBarButton>
+        <ChatActionBarButton onClick={onPopoutChatClick}>
+          <ExternalLinkSquareAlt />
+        </ChatActionBarButton>
+        <ChatActionBarButton onClick={onCloseChatClick}>
+          <Times />
+        </ChatActionBarButton>
       </ChatActionBar>
       <EmbeddedChat
         key={chatRefreshKey}
@@ -46,8 +54,10 @@ const Container = styled.div`
 
 const ChatActionBar = styled.div`
   display: flex;
-  padding: 4px;
-  height: 40px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid #040404;
+  color: #444;
 `
 
 const EmbeddedChat = styled.iframe`
