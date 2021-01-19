@@ -24,10 +24,28 @@ npm install
 mkcert localhost
 ```
 
-6. Run your local development server
+6. Generate a JWT secret (Note: You must use the same secret for the frontend and API)
+
+```
+openssl rand -base64 172 | tr -d '\n'
+```
+
+7. Create`.env.local` in the root folder and add the following with your completed info
+
+```
+NEXT_PUBLIC_API_URL="http://127.0.0.1:8000"
+NEXT_PUBLIC_LOCAL_URL="http://localhost:3000"
+NEXT_PUBLIC_JWT_SECRET=""
+NEXTAUTH_URL="http://localhost:3000/api/auth"
+
+NEXT_PUBLIC_DISCORD_ID=""
+NEXT_PUBLIC_DISCORD_SECRET=""
+```
+
+8. Run your local development server
 
 ```
 npm run dev
 ```
 
-7. Access your development server at https://localhost:3000/
+9. Access your development server at https://localhost:3000/
