@@ -13,5 +13,12 @@ const StyledContainer = styled(Container)`
   justify-content: center;
   align-items: center;
 `
+
+// TODO: Test current static generation optimization vs SSR
+// export const getServerSideProps = wrapper.getServerSideProps(async (ctx) => {
+//   const session = await getSession(ctx)
+//   if (session) ctx.store.dispatch(hydrateFromJwt(session.user))
+// })
+
 Home.layout = Default
 export default Home
