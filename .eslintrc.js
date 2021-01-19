@@ -5,6 +5,7 @@ module.exports = {
     'jest',
     'promise',
     'react',
+    'react-hooks',
   ],
   extends: [
     'airbnb-typescript',
@@ -15,14 +16,8 @@ module.exports = {
     'prettier',
     'prettier/react',
     'prettier/@typescript-eslint',
-
     // "eslint:recommended",
     // "plugin:react/recommended",
-
-    // Uncomment the following lines to enable eslint-config-prettier
-    // Is not enabled right now to avoid issues with the Next.js repo
-    // "prettier",
-    // "prettier/@typescript-eslint"
   ],
   env: {
     browser: true,
@@ -44,25 +39,21 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    // "prettier/prettier": [
-    //   "error",
-    //   {
-    //     "endOfLine": "auto"
-    //   }
-    // ]
+    '@typescript-eslint/no-use-before-define': 0,
+    'import/no-extraneous-dependencies': 0,
+    'import/prefer-default-export': 0,
+    'no-param-reassign': 0,
     //   "react/react-in-jsx-scope": 0,
     //   "react/display-name": 0,
     'react/prop-types': 0,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     //   "@typescript-eslint/explicit-function-return-type": 0,
     //   "@typescript-eslint/explicit-member-accessibility": 0,
     //   "@typescript-eslint/indent": 0,
     //   "@typescript-eslint/member-delimiter-style": 0,
     //   "@typescript-eslint/no-explicit-any": 0,
     //   "@typescript-eslint/no-var-requires": 0,
-    '@typescript-eslint/no-use-before-define': 0,
-    'import/no-extraneous-dependencies': 0,
-    'import/prefer-default-export': 0,
-    'no-param-reassign': 0,
     //   "@typescript-eslint/no-unused-vars": [
     //     2,
     //     {
