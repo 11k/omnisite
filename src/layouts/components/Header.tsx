@@ -1,13 +1,23 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { Nav, Navbar } from 'react-bootstrap'
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { Nav, Navbar } from 'react-bootstrap'
-import { ShieldAlt, Tv, UserCircle } from '@styled-icons/fa-solid'
+import { ShieldAlt, SignInAlt, Tv, UserCircle } from '@styled-icons/fa-solid'
 
 import { colors } from 'design-system'
+import { ModalTypes } from 'shared/enums'
+import { toggleModal } from 'store/slices/uiSlice'
 
-const Header = () => {
+type Props = {
+  isLoggedIn: boolean
+}
+
+const Header: React.FC<Props> = ({ isLoggedIn }) => {
+  const dispatch = useDispatch()
+  const handleClick = () => dispatch(toggleModal(ModalTypes.LOGIN))
+
   return (
     <Navbar expand="lg">
       <Link href="/" passHref>
@@ -54,12 +64,19 @@ const Header = () => {
             Big Screen
           </StyledLink>
         </Link>
-        <Link href="/profile" passHref>
-          <StyledLink>
-            <StyledUserCircle />
-            Account
+        {isLoggedIn ? (
+          <Link href="/profile" passHref>
+            <StyledLink>
+              <StyledUserCircle />
+              Account
+            </StyledLink>
+          </Link>
+        ) : (
+          <StyledLink onClick={handleClick}>
+            <StyledSignIn />
+            Sign In
           </StyledLink>
-        </Link>
+        )}
         {/* <Link href="/admin" passHref>
           <StyledLink>
             <ShieldAlt />
@@ -96,6 +113,12 @@ const StyledLink = styled(Nav.Link)`
     padding-right: 0 !important;
   }
 `
+const StyledSignIn = styled(SignInAlt)`
+  font-weight: 900;
+  width: 1.25em;
+  margin-right: 0.25em;
+`
+
 const StyledTv = styled(Tv)`
   font-weight: 900;
   width: 1.25em;

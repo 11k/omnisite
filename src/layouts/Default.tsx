@@ -1,24 +1,28 @@
-import React, { ReactNode } from 'react'
+import React, { FC, ReactNode } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Head from 'next/head'
 
+import Login from 'views/modals/Login'
 import { Header } from './components'
 
 type Props = {
-  children?: ReactNode
+  children: ReactNode
   title: string
 }
 
-const Main = ({ children, title }: Props) => {
+const Main: FC<Props> = ({ children, title }) => {
+  const isLoggedIn = !!useSelector((state) => state.user.id)
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
       <Container>
-        <Header />
+        <Header isLoggedIn={isLoggedIn} />
         <Container>{children}</Container>
       </Container>
+      <Login />
     </>
   )
 }
