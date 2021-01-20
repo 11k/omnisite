@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
 
-import { ModalTypes } from 'shared/enums'
+import { ModalTypes } from 'lib/enums'
 
 const uiSlice = createSlice({
   name: 'ui',

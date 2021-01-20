@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { ShieldAlt, SignInAlt, Tv, UserCircle } from '@styled-icons/fa-solid'
 
 import { colors } from 'design-system'
-import { ModalTypes } from 'shared/enums'
+import { ModalTypes } from 'lib/enums'
 import { toggleModal } from 'store/slices/uiSlice'
 
 type Props = {

@@ -7,7 +7,7 @@ import { Discord } from '@styled-icons/fa-brands'
 import styled from 'styled-components'
 
 import { colors } from 'design-system'
-import { ModalTypes } from 'shared/enums'
+import { ModalTypes } from 'lib/enums'
 import { toggleModal } from 'store/slices/uiSlice'
 
 const Login: React.FC = () => {

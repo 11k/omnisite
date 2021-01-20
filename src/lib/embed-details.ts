@@ -3,7 +3,9 @@ type EmbedDetails = {
   channel: string
 }
 
-export const embedUrlForEmbedDetails = (embedDetails: EmbedDetails): string => {
+export const embedUrlForEmbedDetails = (
+  embedDetails: EmbedDetails
+): string | null => {
   const { platform, channel } = embedDetails
   let params
   switch (platform) {
@@ -26,20 +28,14 @@ export const embedUrlForEmbedDetails = (embedDetails: EmbedDetails): string => {
   }
 }
 
-export const embedDetailsFromHash = (hash: string): EmbedDetails => {
-  if (!hash) {
-    return null
-  }
+export const embedDetailsFromHash = (hash: string): EmbedDetails | null => {
+  if (!hash) return null
 
   hash = hash.substr(1)
-  if (!hash) {
-    return null
-  }
+  if (!hash) return null
 
   const [platform, channel] = hash.split('/')
-  if (!platform || !channel) {
-    return null
-  }
+  if (!platform || !channel) return null
 
   return {
     platform,
