@@ -1,12 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { Fragment, ReactNode } from 'react'
-import { Provider } from 'react-redux'
 import { NextPage } from 'next'
 import Head from 'next/head'
+import { Provider as NextAuth } from 'next-auth/client'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
+import { AuthProvider } from 'contexts'
 import { colors } from 'design-system'
-import store from 'store'
+import wrapper from 'store'
 
 type AppLayoutProps = {
   Component: NextPage & {
@@ -27,8 +28,9 @@ const GlobalStyling = createGlobalStyle`
   background: ${colors.bgColor};
  }
 `
-export default function MyApp({ Component, pageProps }: AppLayoutProps) {
+function MyApp({ Component, pageProps }: AppLayoutProps) {
   const Layout = Component.layout || Fragment
+  const { session } = pageProps
   // let theme = 'light'
 
   // TODO: Implement theme with Redux
@@ -43,14 +45,18 @@ export default function MyApp({ Component, pageProps }: AppLayoutProps) {
           name="viewport"
         />
       </Head>
-      <Provider store={store}>
-        {/* <ThemeProvider theme={theme}> */}
-        <GlobalStyling />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-        {/* </ThemeProvider> */}
-      </Provider>
+      <NextAuth session={session}>
+        <AuthProvider>
+          {/* <ThemeProvider theme={theme}> */}
+          <GlobalStyling />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+          {/* </ThemeProvider> */}
+        </AuthProvider>
+      </NextAuth>
     </>
   )
 }
+
+export default wrapper.withRedux(MyApp)
