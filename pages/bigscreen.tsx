@@ -2,7 +2,7 @@ import React, { useEffect, useState, useReducer } from 'react'
 import styled from 'styled-components'
 
 import { Default } from 'layouts'
-import { EmbeddedStream, Chat } from 'layouts/components'
+import { EmbeddedStream, Chat } from 'views/Bigscreen'
 import {
   embedUrlForEmbedDetails,
   embedDetailsFromHash,
@@ -17,17 +17,16 @@ const BigScreen = (): JSX.Element => {
   const [chatOnLeft, setChatOnLeft] = useState(false)
   const [showChat, setShowChat] = useState(true)
 
-  const handleRefreshChatClick = () => {
-    refreshChat()
-  }
+  const handleRefreshChatClick = () => refreshChat()
 
-  const handleToggleChatPositionClick = () => {
+  const handleCloseChatClick = () => setShowChat(false)
+
+  const handleToggleChatPositionClick = () =>
     setChatOnLeft((previousChatOnLeft) => {
       const newChatOnLeft = !previousChatOnLeft
       window.localStorage.setItem('chatOnLeft', newChatOnLeft ? 'true' : '')
       return newChatOnLeft
     })
-  }
 
   const handlePopoutChatClick = () => {
     setShowChat(false)
@@ -36,10 +35,6 @@ const BigScreen = (): JSX.Element => {
       '_blank',
       'height=500,width=420'
     )
-  }
-
-  const handleCloseChatClick = () => {
-    setShowChat(false)
   }
 
   useEffect(() => {

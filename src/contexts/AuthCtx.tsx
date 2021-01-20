@@ -17,7 +17,7 @@ import { NextPage } from 'next'
 
 import { ApiService } from 'services'
 import { hydrateFromJwt } from 'store/slices/userSlice'
-import { Routes } from 'shared/enums'
+import { Routes } from 'lib/enums'
 
 type CtxProps = {
   isAuthenticated: boolean

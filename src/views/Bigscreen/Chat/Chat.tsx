@@ -7,7 +7,7 @@ import {
   Times,
 } from '@styled-icons/fa-solid'
 
-import { ChatActionBarButton } from 'layouts/components'
+import { ChatActionBarButton } from './components'
 
 type Props = {
   style?: React.CSSProperties
@@ -18,7 +18,7 @@ type Props = {
   onCloseChatClick: React.MouseEventHandler<HTMLDivElement>
 }
 
-const Chat: React.FunctionComponent<Props> = ({
+const Chat: React.FC<Props> = ({
   style,
   chatRefreshKey,
   onRefreshChatClick,

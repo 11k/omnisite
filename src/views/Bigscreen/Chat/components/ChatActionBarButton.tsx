@@ -8,10 +8,7 @@ type Props = {
   onClick: React.MouseEventHandler<HTMLDivElement>
 }
 
-const ChatActionBarButton: React.FunctionComponent<Props> = ({
-  children,
-  onClick,
-}) => (
+const ChatActionBarButton: React.FC<Props> = ({ children, onClick }) => (
   <StyledChatActionBarButton onClick={onClick}>
     {children}
   </StyledChatActionBarButton>
