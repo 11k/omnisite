@@ -12,18 +12,22 @@ const providers = [
     clientId: process.env.NEXT_PUBLIC_DISCORD_ID!,
     clientSecret: process.env.NEXT_PUBLIC_DISCORD_SECRET!,
   }),
+  Providers.Google({
+    clientId: process.env.NEXT_PUBLIC_GOOGLE_ID!,
+    clientSecret: process.env.NEXT_PUBLIC_GOOGLE_SECRET!,
+  }),
 ]
 
 const callbacks = {
   signIn: async (user, account, profile) => {
-    if (account.provider === 'discord') {
-      user.accessToken = await ApiService.validateUser(
-        'discord',
-        account.accessToken
-      )
-      return true
-    }
-    return false
+    // if (account.provider === 'discord') {
+    user.accessToken = await ApiService.validateUser(
+      account.provider,
+      account.accessToken
+    )
+    //   return true
+    // }
+    // return false
   },
   jwt: async (token, user) => {
     if (user) {

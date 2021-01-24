@@ -3,8 +3,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { signIn } from 'next-auth/client'
 import { Button, Modal } from 'react-bootstrap'
-import { Discord } from '@styled-icons/fa-brands'
-import styled from 'styled-components'
+import { Discord, Google } from '@styled-icons/fa-brands'
+import styled, { css } from 'styled-components'
 
 import { colors } from 'design-system'
 import { ModalTypes } from 'lib/enums'
@@ -26,6 +26,10 @@ const Login: React.FC = () => {
         <Button onClick={() => signIn('discord')}>
           <StyledDiscord />
           Discord
+        </Button>
+        <Button onClick={() => signIn('google')}>
+          <StyledGoogle />
+          Google
         </Button>
       </Body>
       {/* <Modal.Footer>
@@ -55,10 +59,18 @@ const Body = styled(Modal.Body)`
   outline: 0; */
 `
 
-const StyledDiscord = styled(Discord)`
+const iconMixin = css`
   font-weight: 900;
   width: 1.25em;
   margin-right: 0.5em;
+`
+
+const StyledDiscord = styled(Discord)`
+  ${iconMixin}
+`
+
+const StyledGoogle = styled(Google)`
+  ${iconMixin}
 `
 
 export default Login
