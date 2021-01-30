@@ -25,7 +25,7 @@ const Login: React.FC = () => {
 
   return (
     <StyledModal centered onHide={handleClose} show={isVisible}>
-      <Body>
+      <Modal.Body>
         <Row>
           <StyledCol md={5} style={{ display: 'flex', paddingRight: 0 }}>
             <FlexRow>
@@ -78,19 +78,16 @@ const Login: React.FC = () => {
             </StyledButton>
           </StyledCol>
         </Row>
-      </Body>
+      </Modal.Body>
     </StyledModal>
   )
 }
 
 const StyledModal = styled(Modal)`
   .modal-content {
-    border: none !important;
+    background-color: ${colors.bgColor};
+    border: 1px solid ${colors.bgColor} !important;
   }
-`
-
-const Body = styled(Modal.Body)`
-  background-color: ${colors.bgColor};
 `
 
 const Divider = styled.div`
