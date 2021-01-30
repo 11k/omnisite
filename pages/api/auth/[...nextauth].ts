@@ -16,24 +16,30 @@ const providers = [
     clientId: process.env.NEXT_PUBLIC_GOOGLE_ID!,
     clientSecret: process.env.NEXT_PUBLIC_GOOGLE_SECRET!,
   }),
+  Providers.Reddit({
+    clientId: process.env.NEXT_PUBLIC_REDDIT_ID!,
+    clientSecret: process.env.NEXT_PUBLIC_REDDIT_SECRET!,
+  }),
+  Providers.Twitch({
+    clientId: process.env.NEXT_PUBLIC_TWITCH_ID!,
+    clientSecret: process.env.NEXT_PUBLIC_TWITCH_SECRET!,
+  }),
+  Providers.Twitter({
+    clientId: process.env.NEXT_PUBLIC_TWITTER_ID!,
+    clientSecret: process.env.NEXT_PUBLIC_TWITTER_SECRET!,
+  }),
 ]
 
 const callbacks = {
   signIn: async (user, account, profile) => {
-    // if (account.provider === 'discord') {
     user.accessToken = await ApiService.validateUser(
       account.provider,
-      account.accessToken
+      account.accessToken,
+      account.refreshToken
     )
-    //   return true
-    // }
-    // return false
   },
   jwt: async (token, user) => {
     if (user) {
-      // console.log('userToken', user.accessToken)
-      // console.log('SUPER SECRET', process.env.NEXT_PUBLIC_JWT_SECRET)
-
       const decodedJwt = jwt.verify(
         user.accessToken,
         process.env.NEXT_PUBLIC_JWT_SECRET
@@ -51,8 +57,10 @@ const callbacks = {
 }
 
 const options = {
-  providers,
   callbacks,
+  providers,
+  // secret: 'test12345',
+  // debug: true,
 }
 
 const Auth: NextApiHandler = (req, res) => NextAuth(req, res, options)
