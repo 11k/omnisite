@@ -24,9 +24,16 @@ class ApiService {
     }
   }
 
-  async validateUser(authType: string, accessToken: string) {
+  async validateUser(
+    authType: string,
+    accessToken: string,
+    refreshToken: string
+  ) {
     try {
-      const { data } = await axios.post(`/auth/${authType}`, { accessToken })
+      const { data } = await axios.post(`/auth/${authType}`, {
+        accessToken,
+        refreshToken,
+      })
       return data
     } catch (error) {
       console.error('validateUser error', error)

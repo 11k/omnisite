@@ -28,6 +28,12 @@ const colors = Object.freeze({
 
   hbLight: '#849EB5',
   hbDark: '#30394A',
+
+  discord: '#7289DA',
+  google: '#DB4437',
+  reddit: '#FF4500',
+  twitch: '#6441A4',
+  twitter: '#1DA1F2',
 })
 
 export default colors

@@ -47,9 +47,6 @@ const Header: React.FC<Props> = ({ isLoggedIn }) => {
         <Link href="/donate" passHref>
           <StyledLink>Donate</StyledLink>
         </Link>
-        <Link href="/discord" passHref>
-          <StyledLink>Discord</StyledLink>
-        </Link>
         <Link href="/subscribe" passHref>
           <StyledLink>Subscribe</StyledLink>
         </Link>
